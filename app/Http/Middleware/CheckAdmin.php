@@ -11,11 +11,11 @@ class CheckAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
-        // Kiểm tra xem user đã đăng nhập và có role_id = 1 (Admin) hay không
+        // Kiểm tra người dùng đã đăng nhập và có role_id = 1 (Admin) chưa
         if (Auth::check() && Auth::user()->role_id == 1) {
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'Bạn không có quyền truy cập vào trang quản trị Admin!');
+        return redirect('/login')->with('error', 'Bạn không có quyền truy cập trang quản trị!');
     }
 }

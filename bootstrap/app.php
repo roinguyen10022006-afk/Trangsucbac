@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
          // Đăng ký alias 'admin'
         $middleware->alias([
-            'admin' => CheckAdmin::class,    ]);
+            'checkAdmin' => CheckAdmin::class,    ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
