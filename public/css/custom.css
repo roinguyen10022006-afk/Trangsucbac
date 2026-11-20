@@ -1,0 +1,105 @@
+/* --- TÔNG MÀU SANG TRỌNG (SILVER & LUXURY DARK) --- */
+:root {
+    --primary-silver: #e2e8f0;
+    --silver-glow: #cbd5e1;
+    --accent-dark: #0f172a;
+    --accent-rose-gold: #e2e8f0;
+    --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+    --hover-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.18);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+/* --- NAVBAR GLASSMORPHISM (KÍNH MỜ) --- */
+.navbar-glass {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    transition: all 0.4s ease;
+}
+
+.navbar-glass.scrolled {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* --- CARD SẢN PHẨM CAO CẤP --- */
+.product-card-premium {
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    background: #ffffff;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--hover-shadow);
+    border-color: #cbd5e1;
+}
+
+/* Hiệu ứng Zoom ảnh mượt */
+.product-img-holder {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #f8fafc;
+}
+
+.product-img-holder img {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    object-fit: cover;
+}
+
+.product-card-premium:hover .product-img-holder img {
+    transform: scale(1.08);
+}
+
+/* Nút Quick Action khi Hover */
+.quick-action-btns {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: bottom 0.3s ease;
+    opacity: 0;
+    width: 85%;
+}
+
+.product-card-premium:hover .quick-action-btns {
+    bottom: 15px;
+    opacity: 1;
+}
+
+/* --- BADGE BẠC 925 --- */
+.badge-silver {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* --- BUTTON ANIMATION --- */
+.btn-luxury {
+    background: var(--accent-dark);
+    color: #ffffff;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-luxury:hover {
+    background: #334155;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+    transform: scale(1.02);
+}

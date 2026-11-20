@@ -18,4 +18,15 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function reviews()
+{
+    return $this->hasMany(Review::class)->latest();
+}
+
+// Hàm hỗ trợ tính số sao trung bình của sản phẩm
+public function averageRating()
+{
+    return round($this->reviews()->avg('rating'), 1) ?: 5.0;
+}
 }

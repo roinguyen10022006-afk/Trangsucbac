@@ -6,22 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        // 1. Tạo bảng users
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('role_id')->default(2)->constrained('roles')->onDelete('cascade');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
-            $table->rememberToken();
-            $table->timestamps();
-        });
-
-        // 2. Tạo bảng sessions (Bắt buộc để lưu phiên đăng nhập)
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
@@ -32,9 +21,11 @@ return new class extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('users');
         Schema::dropIfExists('sessions');
     }
 };

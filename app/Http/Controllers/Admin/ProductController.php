@@ -114,4 +114,24 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Đã xóa sản phẩm thành công!');
     }
+    public function category($slug)
+{
+    // Ánh xạ slug trên URL với ID danh mục thực tế trong CSDL của bạn
+    // (Thay 1, 2, 3, 4 bằng ID chuẩn trong bảng categories của bạn)
+    $categoryIds = [
+        'nhan-bac'    => 1, // ID của Nhẫn Bạc trong CSDL
+        'day-chuyen'  => 2, // ID của Dây Chuyền trong CSDL
+        'bong-tai'    => 3, // ID của Bông Tai trong CSDL
+        'vong-tay'    => 4, // ID của Vòng & Lắc trong CSDL
+    ];
+
+    $categoryId = $categoryIds[$slug] ?? 1;
+
+    // Lọc theo cột category_id
+    $products = Product::where('category_id', $categoryId) // 👈 Đã sửa thành category_id
+                       ->latest()
+                       ->paginate(8);
+
+    return view('client.home', compact('products'));
+}
 }
